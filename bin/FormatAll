@@ -12,14 +12,14 @@ import sys
 def show_navigatable_errors(e):
 	out = [line.strip() for line in e.output.split("\n")]
 
-	for line in out:
-		r = re.match("\[.*\]\s([^:]*):.*\((\d*):(\d*)\)", line)
+	for l in out:
+		r = re.match("\[.*\]\s([^:]*):.*\((\d*):(\d*)\)", l)
 		if r is not None:
 			filepath, line, col = r.groups()
 			print(f"{filepath}:{line}:{col}")
-			print(line)
+			print(l)
 		else:
-			print(line)
+			print(l)
 
 
 try:
