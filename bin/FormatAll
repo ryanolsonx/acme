@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Use this as a tag anywhere in your project. After saving
+# your file, execute "FormatAll" and it'll run prettier to format
+# all JavaScript/SCSS files in your project.
+$(npm bin)/prettier --loglevel=error --write package.json .babelrc webpack.config.js "src/**/!(mock)*.{js,scss}"

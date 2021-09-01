@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Indent selected text by 2 spaces
+# Tag usage: |i
+
+sed 's/^/  /'

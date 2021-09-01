@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+# Use this as a tag on a JavaScript or SCSS file. "Format" and it'll run
+# prettier to format your file.
+
+import os
+import re
+import subprocess
+import sys
+
+
+file = os.getenv("samfile")
+winid = os.getenv("winid")
+
+
+def ctlarr(arr):
+	for a in arr:
+		ctl(a)
+
+
+def ctl(c):
+	os.system(f"echo \"{c}\" | 9p write acme/{winid}/ctl")
+
+
+def show_navigatable_error(e):
+	out = [line.strip() for line in e.output.split("\n")]
+	r = re.match("\[.*\]\s([^:]*):.*\((\d*):(\d*)\)", out[1])
+	filepath, line, col = r.groups()
+
+	print(f"{filepath}:{line}:{col}")
+	print(e.output)
+
+
+try:
+	ctl("put")
+	c = f"$(npm bin)/prettier --loglevel=error --write {file}"
+	subprocess.check_output(
+		c,
+		stderr=subprocess.STDOUT,
+		shell=True,
+		universal_newlines=True
+	)
+except subprocess.CalledProcessError as e:
+	show_navigatable_error(e)
+else:
+	ctlarr(["get", "clean", "put"])
+

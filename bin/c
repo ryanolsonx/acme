@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Comment out selection
+# Use as a pipe tag: |c
+
+symbol="$1"
+
+if [ ! "$symbol" ]; then
+	symbol='//'
+fi
+
+sed "s!^!$symbol !"

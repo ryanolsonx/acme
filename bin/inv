@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+sed -n 'l' | 9p write acme/new/body
+
+last=$(9p ls acme | sort -g | tail -n 1)
+
+echo "name invisibles" | 9p write acme/$last/ctl
+echo "clean" | 9p write acme/$last/ctl

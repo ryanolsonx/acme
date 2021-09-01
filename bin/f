@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Grep for text in a directory
+# Tag usage:
+#    f TODO src/components
+# OR
+#    f TODO
+# to search in your current directory.
+
+echo ""
+echo "Searching for \"*$1*\" in ${2:-current directory}"
+echo "-----"
+
+grep --color=never -rn "$1" $2

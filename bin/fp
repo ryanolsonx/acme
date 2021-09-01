@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This is my "Ctrl-P". It allows you to kind of fuzzy-find files.
+# Tag usage:
+#     fp App src
+
+echo ""
+echo "Files matching \"*$1*\" in ${2:-current directory}"
+echo "-----"
+find ${2:-.} -name "*$1*"

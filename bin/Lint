@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Use this as a tag on a JavaScript. After saving your file,
+# execute "Lint" and it'll run ESLint on your file. Any errors
+# or warnings should be navigatable.
+
+$(npm bin)/eslint -f unix $samfile
