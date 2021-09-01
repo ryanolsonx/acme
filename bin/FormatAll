@@ -1,6 +1,34 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-# Use this as a tag anywhere in your project. After saving
-# your file, execute "FormatAll" and it'll run prettier to format
-# all JavaScript/SCSS files in your project.
-$(npm bin)/prettier --loglevel=error --write package.json .babelrc webpack.config.js "src/**/!(mock)*.{js,scss}"
+# Use this as a tag "FormatAll" and it'll run
+# prettier to format your whole project.
+
+import os
+import re
+import subprocess
+import sys
+
+
+def show_navigatable_errors(e):
+	out = [line.strip() for line in e.output.split("\n")]
+
+	for line in out:
+		r = re.match("\[.*\]\s([^:]*):.*\((\d*):(\d*)\)", line)
+		if r is not None:
+			filepath, line, col = r.groups()
+			print(f"{filepath}:{line}:{col}")
+			print(line)
+		else:
+			print(line)
+
+
+try:
+	c = "$(npm bin)/prettier --loglevel=error --write package.json .babelrc webpack.config.js \"src/**/*.{js,scss}\""
+	subprocess.check_output(
+		c,
+		stderr=subprocess.STDOUT,
+		shell=True,
+		universal_newlines=True
+	)
+except subprocess.CalledProcessError as e:
+	show_navigatable_errors(e)
