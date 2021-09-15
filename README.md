@@ -10,7 +10,7 @@ Using Acme you sacrifice:
 - syntax highlighting
 - autocompletion
 - specific language support
-- *your favourite Vim/Emacs/Sublime feature* :trollface:
+- *your favourite Vim/Emacs/Sublime/VS Code feature* :trollface:
 
 What you gain is that instead of spending too much time configuring your editor, you will focus on actual working.
 
@@ -47,3 +47,10 @@ I work a lot with JavaScript and SCSS. A lot of my scripts are geared towards th
 | i         | \|i           | Acme tag | Indent selection by 2 spaces                      |
 | ui        | \|ui          | Acme tag | Unindent selection by 2 spaces                    |
 | inv       | >inv          | Acme tag | Show invisibles in selection (in new window pane) |
+
+## Tips
+
+`Edit =` to find out current line number
+`:13` Go to the 13th line
+`Edit , | sed 's/text/TEXT/g'` to replace text with TEXT in the whole buffer
+`|sed 's/text/TEXT/g'` to replace "text" with "TEXT" in the current selection
