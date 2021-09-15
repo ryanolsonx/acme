@@ -8,4 +8,6 @@ export NODE_NO_READLINE=1
 plumber
 cat "$PLAN9/plumb/basic" | 9p write plumb/rules
 
-acme -a -f /mnt/font/Menlo-Regular/12a/font &
+# acme -a -f /mnt/font/Menlo-Regular/12a/font &
+#acme -a -f /mnt/font/GoRegular/12a/font &
+acme -a -f /mnt/font/LucidaGrande/12a/font &
