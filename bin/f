@@ -2,12 +2,13 @@
 
 # Grep for text in a directory
 # Tag usage:
-#    f TODO src/components
+#    f src/components TODO
 
 import os
 import sys
 
-search_term = " ".join(sys.argv[1:-1])
-dir = sys.argv[-1:][0]
+dir = sys.argv[1]
+search_term = " ".join(sys.argv[2:])
+print(search_term)
 
 os.system(f"grep --color=never -rn \"{search_term}\" {dir}")

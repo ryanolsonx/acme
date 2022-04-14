@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Use this as a tag on a JavaScript or SCSS file. "Format" and it'll run
+# Use this as a tag on a JavaScript or SCSS file. "Save" and it'll run
 # prettier to format your file.
 
 import os
@@ -31,8 +31,7 @@ def show_navigatable_error(e):
 	print(e.output)
 
 
-try:
-	ctl("put")
+def prettier():
 	c = f"$(npm bin)/prettier --loglevel=error --write {file}"
 	subprocess.check_output(
 		c,
@@ -40,8 +39,14 @@ try:
 		shell=True,
 		universal_newlines=True
 	)
+
+
+try:
+	ctl("put")
+
+	if file.endswith(".js") or file.endswith(".scss"):
+		prettier()
 except subprocess.CalledProcessError as e:
 	show_navigatable_error(e)
 else:
 	ctlarr(["get", "clean", "put"])
-

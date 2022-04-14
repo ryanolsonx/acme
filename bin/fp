@@ -2,9 +2,9 @@
 
 # This is my "Ctrl-P". It allows you to kind of fuzzy-find files.
 # Tag usage:
-#     fp App src
+#     fp src App
 
 echo ""
-echo "Files matching \"*$1*\" in ${2:-current directory}"
+echo "Files matching \"*$2*\" in ${1}"
 echo "-----"
-find ${2:-.} -name "*$1*"
+find ${1} -name "*$2*"

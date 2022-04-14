@@ -16,4 +16,4 @@ if len(sys.argv) < 2:
 
 
 q = sys.argv[1]
-os.system(f"grep --color=never -rinE \"function ({q})\(\"")
+os.system(f"git grep --color=never -rinE \"function ({q})\(\"")
